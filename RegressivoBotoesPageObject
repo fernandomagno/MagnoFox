@@ -1,0 +1,92 @@
+package br.com.magno.fox.regressivo;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import br.com.magno.fox.core.WDS;
+
+public class RegressivoBotoesPageObject {
+	
+	@FindBy(id="action_novo")
+	private WebElement botaoAction;
+	
+	@FindBy(id="action_cadastrar")
+	private WebElement botaoNovoParametro;
+	
+	@FindBy(id="action_processar")
+	private WebElement botaoProcessar;
+	
+	@FindBy(id="actions_consultar")
+	private WebElement botaoConsultar;
+	
+	@FindBy(id="action_resumo")
+	private WebElement botaoResumo;
+	
+	@FindBy(id="salvar_button")
+	private WebElement botaoSalvarDepartamento;
+	
+	@FindBy(id="formActions:btn-novo")
+	private WebElement botaoSalvarManutencao;
+	
+	@FindBy(id="action_novacarteira")
+	private WebElement botaoSalvarNovaCarteira;
+	
+	@FindBy(id="action_negociar")
+	private WebElement botaoSalvarNegociacao;
+	
+	@FindBy(id="action_associar")
+	private WebElement botaoAssociar;
+	
+	@FindBy(id="action_consultar")
+	private WebElement botaoConsultar2;
+	
+	public static RegressivoBotoesPageObject deve(){
+		return PageFactory.initElements(WDS.get(), RegressivoBotoesPageObject.class);
+	}
+	
+	public void clicarAction (){
+		botaoAction.click();
+	}
+	
+	public void clicarAction2 (){
+		botaoNovoParametro.click();
+	}
+	
+	public void clicarAction3 (){
+		botaoProcessar.click();
+	}
+	
+	public void clicarAction4 (){
+		botaoConsultar.click();
+	}
+	
+	public void clicarAction5() {
+		botaoResumo.click();
+	}
+	
+	public void clicarAction6() {
+		botaoSalvarDepartamento.click();
+	}
+	
+	public void clicarAction7() {
+		botaoSalvarManutencao.click();
+	}
+	
+	public void clicarAction8() {
+		botaoSalvarNovaCarteira.click();
+	}
+	
+	public void clicarAction9() {
+		botaoSalvarNegociacao.click();
+	}
+	
+	public void clicarAction10() {
+		botaoAssociar.click();
+	}
+	
+	public void clicarAction11() {
+		botaoConsultar2.click();
+	}
+
+}
