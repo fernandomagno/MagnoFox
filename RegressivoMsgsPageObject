@@ -1,0 +1,285 @@
+package br.com.magno.fox.regressivo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import br.com.magno.fox.core.WDS;
+
+public class RegressivoMsgsPageObject {
+	
+	@FindBy(xpath="//div[@id='breadcrumbs']/ul[@class='breadcrumb']/li[2]/a")
+	private WebElement novoDashboard;
+	
+	@FindBy(className="control-label xh-highlight")
+	private WebElement labelUsuario;
+	
+	@FindBy(id="listagem:baseDataTable:idColumn_row_title")
+	private WebElement labelCodigo;
+	
+	@FindBy(id="listagem:baseDataTable:nameColumn_row_title")
+	private WebElement labelNome;
+	
+	@FindBy(id="listagem:baseDataTable:status_row_title")
+	private WebElement labelStatus;
+	
+	@FindBy(xpath="//div[@class='row'][2]/label[1]/span[@class='lbl']")
+	private WebElement labelAtivo;
+	
+	@FindBy(xpath="//div[@class='row'][2]/label[2]/span[@class='lbl']")
+	private WebElement labelInativo;
+	
+	@FindBy(xpath="//div[@class='row'][2]/label[3]/span[@class='lbl']")
+	private WebElement labelTodos;
+	
+	@FindBy(id="action_salvar")
+	private WebElement btnSalvar;
+	
+	@FindBy(id="action_voltar")
+	private WebElement btnVoltar;
+	
+	@FindBy(xpath="//div[@class='alert alert-error alert-danger'][1]")
+	private WebElement alerta1;
+	
+	@FindBy(xpath="//div[@class='alert alert-error alert-danger'][2]")
+	private WebElement alerta2;
+	
+	@FindBy(xpath="//button[@class='base-button btn btn btn-success btn-round no-border base-action']")
+	private WebElement btnSalvar2;
+	
+	@FindBy(xpath="//button[@class='btn btn-success btn-round no-border base-action submit-search']")
+	private WebElement btnPesquisar;
+	
+	@FindBy(xpath="//div[@id='departamentoMessages']/div[@class='ui-messages-info ui-corner-all']/ul/li")
+	private WebElement alertaDepartamento;
+	
+	@FindBy(id="actions_salvar")
+	private WebElement btnSalvar3;
+	
+	@FindBy(id="salvar_button_wkf")
+	private WebElement btnSalvarManutencao;
+	
+	@FindBy(id="action_gerar_ordem")
+	private WebElement btnGerarOrdem;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[2]")
+	private WebElement labelPrimeiro;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[3]")
+	private WebElement labelSegundo;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[4]")
+	private WebElement labelTerceiro;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[5]")
+	private WebElement labelQuarto;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[6]")
+	private WebElement labelQuinto;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[7]")
+	private WebElement labelSexto;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[8]")
+	private WebElement labelSetimo;
+	
+	@FindBy(xpath="//thead/tr[@class='headers']/th[9]")
+	private WebElement labelOitavo; 
+	
+	@FindBy(xpath="//div[@class='row-fluid'][1]/div[@class='span12']/div[@class='widget-box transparent']/h5[@class='bigger lighter']")
+	private WebElement labelFilialOrigemDestino;
+	
+	@FindBy(xpath="//div[@class='row-fluid'][1]/div[@class='span12']/div[@class='widget-box transparent']/div[@class='widget-body']/div[@class='span11 offset1']/div[@class='row hfield-form-group '][1]/div[@class='hfield-form-group'][1]/div[@class='col-xs-2 hfield-info-label']/label")
+	private WebElement labelFilialEspelho;
+	
+	@FindBy(xpath="//div[@class='row-fluid'][1]/div[@class='span12']/div[@class='widget-box transparent']/div[@class='widget-body']/div[@class='span11 offset1']/div[@class='row hfield-form-group '][2]/div[@class='hfield-form-group'][1]/div[@class='col-xs-2 hfield-info-label']/label")
+	private WebElement labelFilialDestino;
+	
+	@FindBy(xpath="//div[@class='hfield-form-group'][2]/div[@class='col-xs-2 hfield-info-label']/label")
+	private WebElement labelSemEspelho;
+	
+	@FindBy(xpath="//div[@class='row-fluid'][2]/div[@class='span12']/div[@class='widget-box transparent']/h5[@class='bigger lighter']")
+	private WebElement labelAtualizar;
+	
+	@FindBy(xpath="//div[@class='row-fluid'][2]/div[@class='span12']/div[@class='widget-box transparent']/div[@class='widget-body']/div[@class='span11 offset1']/div[@class='row hfield-form-group ']/div[@class='hfield-form-group']/div[@class='col-xs-2 hfield-info-label']/label")
+	private WebElement labelSelecao;
+	
+	@FindBy(xpath="//span[@id='filtroPerfil']/div[@class='bootstrap-duallistbox-container row moveonselect']/div[@class='box1 col-md-6']/label")
+	private WebElement labelOrigem;
+	
+	@FindBy(xpath="//span[@id='filtroPerfil']/div[@class='bootstrap-duallistbox-container row moveonselect']/div[@class='box2 col-md-6']/label")
+	private WebElement labelAplicarAcesso;
+	
+	@FindBy(xpath="/html/body/div[2]/div[2]/div/div/div/div[1]/h1")
+	private WebElement novoDashboardMkt;
+	
+	public static RegressivoMsgsPageObject deve(){
+		return PageFactory.initElements(WDS.get(), RegressivoMsgsPageObject.class);
+	}
+	
+	public String pegarAlerta(){
+		return novoDashboard.getText();
+	}
+	
+	public String pegarAlertaMkt(){
+		return novoDashboardMkt.getText().replaceAll("/s+", "");
+	}
+	public String pegarLabelCodigo(){
+		return labelCodigo.getText();
+	}
+	
+	public String pegarLabelNome(){
+		return labelNome.getText();
+	}
+	
+	public String pegarLabelStatus(){
+		return labelStatus.getText();
+	}
+	
+	public String pegarLabelPrimeiro(){
+		return labelPrimeiro.getText();
+	}
+	
+	public String pegarLabelSegundo(){
+		return labelSegundo.getText();
+	}
+	
+	public String pegarLabelTerceiro(){
+		return labelTerceiro.getText();
+	}
+	
+	public String pegarLabelQuarto(){
+		return labelQuarto.getText();
+	}
+	
+	public String pegarLabelQuinto(){
+		return labelQuinto.getText();
+	}
+	
+	public String pegarLabelSexto(){
+		return labelSexto.getText();
+	}
+	
+	public String pegarLabelSetimo(){
+		return labelSetimo.getText();
+	}
+	
+	public String pegarLabelOitavo(){
+		return labelOitavo.getText();
+	}
+
+	public String pegarBtnSalvar (){
+		return btnSalvar.getText();
+	}
+	
+	public String pegarBtnVoltar (){
+		return btnVoltar.getText();
+	}
+	
+	public String pegarAlerta1 (){
+		return alerta1.getText();
+	}
+	
+	public String pegarAlerta2 (){
+		return alerta2.getText();
+	}
+	
+	public String pegarBtnSalvar2 (){
+		return btnSalvar2.getText();
+	}
+	
+	public String pegarBtnPesquisar (){
+		return btnPesquisar.getText();
+	}
+	
+	public String pegarDepartamento (){
+		return alertaDepartamento.getText();
+	}
+	
+	public String pegarBtnSalvar3 (){
+		return btnSalvar3.getText();
+	}
+	
+	public String pegarBtnSalvar4 (){
+		return btnSalvarManutencao.getText();
+	}
+	
+	public String pegarBtnGerarOrdem (){
+		return btnGerarOrdem.getText();
+	}
+	
+	public String pegarFilialEspelho(){
+		return  labelFilialEspelho.getText();
+	}
+	
+	public String pegarFilialDestino(){
+		return labelFilialDestino.getText();
+	}
+	
+	public String pegarLabelSemEspelho(){
+		return labelSemEspelho.getText();
+	}
+	
+	public String pegarFilialOrigemDestino(){
+		return labelFilialOrigemDestino.getText();
+	}
+	
+	public String pegarLabelAtualizar(){
+		return labelAtualizar.getText();
+	}
+	
+	public String pegarLabelSelecao(){
+		return labelSelecao.getText();
+	}
+	
+	public String pegarLabelDados(){
+		return labelOrigem.getText();
+	}
+	
+	public String pegarLabelAplicar(){
+		return labelAplicarAcesso.getText();
+	}
+	
+	public String pegarLabelUsuario(){
+		return labelUsuario.getText();
+	}
+	
+	public String pegarLabelAtivo(){
+		return labelAtivo.getText();
+	}
+	
+	public String pegarLabelInativo(){
+		return labelInativo.getText();
+	}
+	
+	public String pegarLabelTodos(){
+		return labelTodos.getText();
+	}
+
+	public void esperarResultado() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='breadcrumbs']/ul[@class='breadcrumb']/li[2]/a")));
+	}
+	
+	public void esperarResultadoMkt() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div/div/div[1]/h1".replaceAll("/s+", ""))));
+	}
+	
+	public void esperarBotaoAction() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.id("action_novo")));
+	}
+	
+	public void esperarDanger1() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='alert alert-error alert-danger'][1]")));
+	}
+	
+	public void esperarDanger2() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='alert alert-error alert-danger'][2]")));
+	}
+	
+	public void esperarResultado2() {
+		WDS.getWaitRelatorio().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='departamentoMessages']/div[@class='ui-messages-info ui-corner-all']/ul/li")));
+	}
+	
+}
