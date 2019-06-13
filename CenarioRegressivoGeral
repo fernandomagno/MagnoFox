@@ -1,0 +1,1282 @@
+package br.com.magno.fox.regressivo;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import br.com.magno.fox.categorias.suites.Producao;
+import br.com.magno.fox.categorias.suites.SmokeTest;
+import br.com.magno.fox.core.LoggedForTesting;
+import br.com.magno.fox.core.WDS;
+import br.com.magno.fox.enviroment.Ambiente;
+
+public class CenarioRegressivoGeral extends LoggedForTesting {
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMR04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMR04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Usuário", RegressivoMsgsPageObject.deve().pegarAlerta());
+		// assertEquals("Usuário", RegressivoMsgsPageObject.deve().pegarLabelUsuario());
+		assertEquals(" Ativo", RegressivoMsgsPageObject.deve().pegarLabelAtivo());
+		assertEquals(" Inativo", RegressivoMsgsPageObject.deve().pegarLabelInativo());
+		assertEquals(" Todos", RegressivoMsgsPageObject.deve().pegarLabelTodos());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM07() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM07"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Dashboard", RegressivoMsgsPageObject.deve().pegarAlerta());
+		assertEquals("Código", RegressivoMsgsPageObject.deve().pegarLabelPrimeiro());
+		assertEquals("Nome", RegressivoMsgsPageObject.deve().pegarLabelSegundo());
+		assertEquals("Descrição", RegressivoMsgsPageObject.deve().pegarLabelTerceiro());
+		assertEquals("Status", RegressivoMsgsPageObject.deve().pegarLabelQuarto());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals(" Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM14() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM14"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Manutenção de Parâmetros", RegressivoMsgsPageObject.deve().pegarAlerta());
+		assertEquals("Parâmetro", RegressivoMsgsPageObject.deve().pegarLabelPrimeiro());
+		assertEquals("Descrição", RegressivoMsgsPageObject.deve().pegarLabelSegundo());
+		assertEquals("Abrangência", RegressivoMsgsPageObject.deve().pegarLabelTerceiro());
+		assertEquals("Tipo de Dado", RegressivoMsgsPageObject.deve().pegarLabelQuarto());
+		assertEquals("Valor Padrão", RegressivoMsgsPageObject.deve().pegarLabelQuinto());
+		assertEquals("Data Inclusão", RegressivoMsgsPageObject.deve().pegarLabelSexto());
+		assertEquals("Usuário Inclusão", RegressivoMsgsPageObject.deve().pegarLabelSetimo());
+		assertEquals("Status", RegressivoMsgsPageObject.deve().pegarLabelOitavo());
+		RegressivoBotoesPageObject.deve().clicarAction2();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM13() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM13"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Atualização Filial por Usuário", RegressivoMsgsPageObject.deve().pegarAlerta());
+		assertEquals("Filial Origem e Destino", RegressivoMsgsPageObject.deve().pegarFilialOrigemDestino());
+		assertEquals("Filial Espelho", RegressivoMsgsPageObject.deve().pegarFilialEspelho());
+		assertEquals("Filial Destino", RegressivoMsgsPageObject.deve().pegarFilialDestino());
+		assertEquals("Sem Espelho", RegressivoMsgsPageObject.deve().pegarLabelSemEspelho());
+		assertEquals("Atualizar Acesso de Filial para Usuário", RegressivoMsgsPageObject.deve().pegarLabelAtualizar());
+		assertEquals("Forma de Seleção", RegressivoMsgsPageObject.deve().pegarLabelSelecao());
+		assertEquals("Dados de Origem:", RegressivoMsgsPageObject.deve().pegarLabelDados());
+		assertEquals("Aplicar Acesso à Filial Destino:", RegressivoMsgsPageObject.deve().pegarLabelAplicar());
+		RegressivoBotoesPageObject.deve().clicarAction3();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Preenchimento obrigatório: Filial Destino", RegressivoMsgsPageObject.deve().pegarAlerta1());
+		assertEquals("Selecione pelo menos um perfil ou um usuário.", RegressivoMsgsPageObject.deve().pegarAlerta2());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMR03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMR03"));// botao de processar exporta para excel
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Auditoria de Acesso", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarADMM12() { WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM12"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Perfil", RegressivoMsgsPageObject.deve().pegarAlerta());
+	 * RegressivoBotoesPageObject.deve().clicarAction(); RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Salvar",
+	 * RegressivoMsgsPageObject.deve().pegarBtnSalvar2()); }
+	 */
+	
+	/*
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMR02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMR02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Acesso", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction4();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Acesso", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+   */
+	
+	/*
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarADMM11() { WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM11"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Usuários", RegressivoMsgsPageObject.deve().pegarAlerta());
+	 * RegressivoBotoesPageObject.deve().clicarAction(); RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Salvar",
+	 * RegressivoMsgsPageObject.deve().pegarBtnSalvar()); }
+	 */
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM10() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM10"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Auditoria", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM08() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM08"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Comparativo de Preços", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction5();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Pesquisar", RegressivoMsgsPageObject.deve().pegarBtnPesquisar());
+
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Jobs fox", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM15() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM15"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Grupo de Usuário", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarADMM16() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ADM/ADMM16"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Workflow", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM28() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM28"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Fabricante", RegressivoMsgsPageObject.deve().pegarAlerta());
+		assertEquals("Código", RegressivoMsgsPageObject.deve().pegarLabelCodigo());
+		assertEquals("Nome", RegressivoMsgsPageObject.deve().pegarLabelNome());
+		assertEquals("Status", RegressivoMsgsPageObject.deve().pegarLabelStatus());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM21() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM21"));// departamento vazio em producao
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Departamento", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction6();
+		RegressivoMsgsPageObject.deve().esperarResultado2();
+		assertEquals("DEPARTAMENTO SALVO COM SUCESSO", RegressivoMsgsPageObject.deve().pegarDepartamento());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM07() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM07"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Comprador", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar3());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM12() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM12"));// botao de exportar para excel
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Estrutura Mercadológica", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM11() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM11"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Feriado", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Fornecedor", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM15() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM15"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Manutenção de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+		// RegressivoBotoesPageObject.deve().clicarAction7();
+		// RegressivoMsgsPageObject.deve().esperarResultado();
+		// assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar4());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Marca", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM20() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM20"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Adicionais da Filial", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Produtos de Revenda", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar3());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM05"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Regionais", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM10() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM10"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Tabela Nutricional", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM13() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM13"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Carteira de Comprador", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM09() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM09"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Carteira de Fornecedor", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction8();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMC02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMC02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Cluster de Loja", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMC03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMC03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Cluster de Operações", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM08() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM08"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Grupo de Fornecedor", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMC01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMC01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Grupo de Preço de Produtos", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM17() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM17"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Manutenção de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM14() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM14"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Parâmetro Preço Gerente", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction2();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Voltar", RegressivoMsgsPageObject.deve().pegarBtnVoltar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM18() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM18"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Manutenção de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMC04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMC04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Agrupamento de Filiais", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM25() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM25"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Bloquear Preço Gerente", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM29() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM29"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Configurações", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM26() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM26"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Espelhamento de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM27() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM27"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Listagem MIP Workflow", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM24() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM24"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Evento", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM22() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM22"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Local de Estoque", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM23() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM23"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Tipo de Documento", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRM02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRM02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Motivo de Movimentação", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarLOGA03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/LOG/LOGA03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Parâmetro de Filial", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarLOGA02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/LOG/LOGA02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Parâmetro de CD", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarLOGA01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/LOG/LOGA01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Parâmetro de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM06"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Cadastro de Workflow", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMR01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMR01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Workflow", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMW03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMW03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Workflow de Fornecedor", RegressivoMsgsPageObject.deve().pegarAlerta());
+		// RegressivoBotoesPageObject.deve().clicarAction();
+		// RegressivoMsgsPageObject.deve().esperarResultado();
+		// assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMM16() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMM16"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Listagem Workflow", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCAMW01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CAM/CAMW01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Workflow de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar3());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPM04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPM04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Pré-Pedido", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+/*
+ 	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPN01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPN01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Gerar Negociação", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction9();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Gerar Ordem", RegressivoMsgsPageObject.deve().pegarBtnGerarOrdem());
+	}
+*/
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPO01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPO01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Ordem de Compra", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPM01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPM01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Bandeira", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPM03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPM03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction10();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCPM02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCP/CCPM02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Usuário", RegressivoMsgsPageObject.deve().pegarAlerta());
+		RegressivoBotoesPageObject.deve().clicarAction();
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Salvar", RegressivoMsgsPageObject.deve().pegarBtnSalvar());
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarCMPO01() { WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO01"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Análise de Compra", RegressivoMsgsPageObject.deve().pegarAlerta());
+	 * RegressivoBotoesPageObject.deve().clicarAction11(); RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Preenchimento obrigatório: Filiais.",
+	 * RegressivoMsgsPageObject.deve().pegarAlerta1()); assertEquals("Preenchimento obrigatório: Grupo de Fornecedores ou Fornecedor.",
+	 * RegressivoMsgsPageObject.deve().pegarAlerta2()); }
+	 * 
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarCMPO02() { WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO02"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Negociação de Compra", RegressivoMsgsPageObject.deve().pegarAlerta()); }
+	 * 
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarCMPO03() { WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO03"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Pedido de Compra", RegressivoMsgsPageObject.deve().pegarAlerta()); }
+	 */
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO07() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO07"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Pedido de Compra", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO10() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO10"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Config. Pré Pedido", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO09() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO09"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Consolidação", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO08() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO08"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Solicitação Pré-Pedido", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO11() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO11"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Tipo Pré Pedido", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Transferência", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO05"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Pedido de Transferência", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPE01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPE01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Espelhamento de Preço", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPP03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPP03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Liberação Pontual", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPP01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPP01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Precificar", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPP02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPP02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Preço Gerente", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPR04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPR04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Demanda", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Alíquotas Interestaduais", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM06"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Antecipação Tributária", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Classificação Fiscal", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("CST", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Regras Fiscais", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM08() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM08"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Natureza de Pis e Cofins", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM07() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM07"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Observação da Nota Fiscal", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarFISM05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/FIS/FISM05"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Regime de Tributação", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarCMPR03() { WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPR03"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Análise de Demanda", RegressivoMsgsPageObject.deve().pegarAlerta()); }
+	 */
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPO06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPO06"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Fatex", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRR01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRR01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Consulta Sintética de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRR02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRR02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Extrato de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRO03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRO03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("MIP - Movimentação Interna de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRO01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRO01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Carga PDV e Balança", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarOPRM01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/OPR/OPRM01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Identificação de Palete", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCADREL01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/CADREL01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Produtos Cadastrados", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR22() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR22"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCMPR02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CMP/CMPR02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Comparativo de Compra", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR21() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR21"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Preço Gerente Loja", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR12() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR12"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Compras", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR18() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR18"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Inconsistência de Preço", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR14() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR14"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Precificação", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Ruptura de Estoque", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR24() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR24"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Estoque Sem Preço", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR16() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR16"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Baixo Giro", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise Financeira de Estoque", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	/*
+	 * @Test
+	 * 
+	 * @Category({ Producao.class, SmokeTest.class }) public void validarRELR20() { WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR20"));
+	 * RegressivoMsgsPageObject.deve().esperarResultado(); assertEquals("Análise Abastecimento", RegressivoMsgsPageObject.deve().pegarAlerta()); }
+	 */
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR05"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Compra Venda e Estoque", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR06"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Analise Performance de Agendamento", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Ruptura de Estoque", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR23() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR23"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Indicadores", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR09() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR09"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Prazo de Validades", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR02"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Controle de Despesas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR19() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR19"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Detalhamento de Operadores PDV", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR17() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR17"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Venda de Serviços", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR10() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR10"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Acompanhamento Diário", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCLPR01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/VND/CLPR01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório Coleta de Preço", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarVNDR04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/VND/VNDR04"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise de Venda e Margem Net2", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarVNDR05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/VND/VNDR05"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise Financeira de Vendas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarVNDR03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/VND/VNDR03"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Comparativo de Vendas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR15() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR15"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Projeção da Margem de Venda", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR11() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR11"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório de Vendas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarVNDR01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/VND/VNDR01"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Vendas por Produto", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR29() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR29"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Alteração de Preço", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR30() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR30"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório MIPs Cadastradas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR26() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR26"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Análise Abastecimento", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR27() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR27"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Log Abastecimento", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarRELR28() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/REL/RELR28"));
+		RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Relatório Operações Vendas", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+//MARKETING
+	
+	/*
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTAN01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTAN01"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Contratos Análise de Contratos", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTAN02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTAN02"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Despesas Análise de despesas", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD01"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Compradores Listagem de Compradores cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD02"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Medidas Listagem de Medidas cadastradas", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD03"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Motivo Despesa Listagem de Motivos de Despesas cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD04"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Produto Listagem de Produtos cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD05"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Tipo de Backlight Listagem de Tipo de Backlight", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD06"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Tipo Despesa Listagem de Tipos de Despesas cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCD07() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCD07"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Tipo de Pacote Listagem de Tipo de Pacote", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCA02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCA02"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Perfil de Usuário Listagem de Perfis de Usuários cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTCA03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTCA03"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Usuários Listagem de Usuários cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTDS01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTDS01"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Dashboard", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP01"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Artes Listagem de artes por contrato", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP02"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Contrato Listagem de Contratos cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP03"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Despesa Listagem de Despesas cadastradas por filial", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP04() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP04"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Filiais Listagem de Filiais cadastradas", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP05() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP05"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Fornecedores Listagem de Fornecedores cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTOP06() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTOP06"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Pacotes Listagem de Pacotes cadastrados", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTRL02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTRL02"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Geral Relatório Geral", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarMKTRL01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/MKT/MKTRL01"));
+	    RegressivoMsgsPageObject.deve().esperarResultadoMkt();
+		assertEquals("Contratos Relatório de Contratos", RegressivoMsgsPageObject.deve().pegarAlertaMkt());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarCCIO01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/CCI/CCIO01"));
+	    RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Requisição de Materiais", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class, SmokeTest.class })
+	public void validarACTC03() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ACT/ACTC03"));
+	    RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Calendário de Ações", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+
+	@Test
+	@Category({ Producao.class , SmokeTest.class })
+	public void validarACTC01() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ACT/ACTC01"));
+	    RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Formato", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+	@Test
+	@Category({ Producao.class , SmokeTest.class })
+	public void validarACTC02() {
+		WDS.get().navigate().to(Ambiente.atual().programa("/ACT/ACTC02"));
+	    RegressivoMsgsPageObject.deve().esperarResultado();
+		assertEquals("Tipo de Ação", RegressivoMsgsPageObject.deve().pegarAlerta());
+	}
+	
+*/	
+}
+
